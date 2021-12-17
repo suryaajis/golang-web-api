@@ -2,12 +2,15 @@ package main
 
 import (
 	"golang-web-api/handler"
+	"golang-web-api/pkg/db"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	// dsn := "host=localhost user=postgres password=postgres dbname=profession-api port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	db.Init()
 	router := gin.Default()
 
 	// API Versioning (membuat routing versi yang lain)

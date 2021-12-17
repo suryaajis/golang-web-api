@@ -2,7 +2,7 @@ package handler
 
 import (
 	"fmt"
-	"golang-web-api/profession"
+	"golang-web-api/pkg/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -47,7 +47,7 @@ func ProfessionDetailHandler(c *gin.Context) {
 
 func AddProfession(c *gin.Context) {
 	// title, salary, description
-	var input profession.Profession
+	var input model.InputProfession
 
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
