@@ -47,7 +47,7 @@ func ProfessionDetailHandler(c *gin.Context) {
 
 func AddProfession(c *gin.Context) {
 	// title, salary, description
-	var input model.InputProfession
+	var input model.ProfessionRequest
 
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
@@ -60,9 +60,9 @@ func AddProfession(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"title":    input.Title,
-		"salary":   input.Salary,
-		"category": input.Category,
-		"desc":     input.Description,
+		"name":   input.Name,
+		"salary": input.Salary,
+		"rating": input.Rating,
+		"desc":   input.Description,
 	})
 }

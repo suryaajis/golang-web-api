@@ -2,9 +2,9 @@ package model
 
 import "encoding/json"
 
-type InputProfession struct {
-	Title       string      `json:"title" binding:"required"`
+type ProfessionRequest struct {
+	Name        string      `json:"name" binding:"required"`
 	Salary      json.Number `json:"salary" binding:"required,number"`
-	Category    string
+	Rating      int
 	Description string `json:"desc"`
 }

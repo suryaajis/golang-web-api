@@ -1,6 +1,6 @@
 # golang-web-api
 
-# Third Party Library
+# Library
 1. Gionic Gin (Routing)
 2. Gorm (Go Object Relational Management)
 
