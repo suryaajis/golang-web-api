@@ -16,7 +16,61 @@ func Init() *gorm.DB {
 		log.Fatal("DB Connection Failed")
 	}
 
+	// MIGRATE TABLE
 	db.AutoMigrate(&model.Profession{})
+
+	// CREATE
+	// profession := model.Profession{}
+	// profession.Name = "Police"
+	// profession.Salary = 3500000
+	// profession.Rating = 9
+	// profession.Description = "People who secure country"
+
+	// err = db.Create(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error create profession record")
+	// }
+
+	// READ
+	/*
+		1. db.First (data id pertama)
+		2. db.Last (data id terakhir)
+		3. db.First(model, primarykey) ambil berdasarkan primary key
+		4. db.Find (untuk mengambil semua data) bentuk slice / array
+		# https://gorm.io/docs/query.html
+	*/
+	// var profession model.Profession
+	// err = db.Debug().Where("id = ?", 1).First(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error read profession record")
+	// }
+	// fmt.Println(profession)
+
+	// UPDATE
+	// get / read data first and then update it
+	// var profession model.Profession
+	// err = db.Debug().Where("id = ?", 1).First(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error read profession record")
+	// }
+
+	// profession.Rating = 9
+	// err = db.Save(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error update profession record")
+	// }
+
+	// DELETE
+	// var profession model.Profession
+	// err = db.Debug().Where("id = ?", 1).First(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error read profession record")
+	// }
+
+	// err = db.Delete(&profession).Error
+	// if err != nil {
+	// 	fmt.Println("Error update profession record")
+	// }
 
 	return db
 }
