@@ -4,6 +4,7 @@ type Service interface {
 	FindAll() ([]Profession, error)
 	FindByID(ID int) (Profession, error)
 	Create(professionRequest ProfessionRequest) (Profession, error)
+	Update(ID int, professionRequest ProfessionRequest) (Profession, error)
 }
 
 type service struct {
@@ -37,5 +38,19 @@ func (s *service) Create(professionRequest ProfessionRequest) (Profession, error
 	}
 
 	newProfesi, err := s.repository.Create(profesi)
+	return newProfesi, err
+}
+
+func (s *service) Update(ID int, professionRequest ProfessionRequest) (Profession, error) {
+	profesi, _ := s.repository.FindByID(ID)
+
+	salary, _ := professionRequest.Salary.Int64()
+
+	profesi.Name = professionRequest.Name
+	profesi.Salary = int(salary)
+	profesi.Rating = professionRequest.Rating
+	profesi.Description = professionRequest.Description
+
+	newProfesi, err := s.repository.Update(profesi)
 	return newProfesi, err
 }
