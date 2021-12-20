@@ -5,6 +5,7 @@ type Service interface {
 	FindByID(ID int) (Profession, error)
 	Create(professionRequest ProfessionRequest) (Profession, error)
 	Update(ID int, professionRequest ProfessionRequest) (Profession, error)
+	Delete(ID int) (Profession, error)
 }
 
 type service struct {
@@ -53,4 +54,10 @@ func (s *service) Update(ID int, professionRequest ProfessionRequest) (Professio
 
 	newProfesi, err := s.repository.Update(profesi)
 	return newProfesi, err
+}
+
+func (s *service) Delete(ID int) (Profession, error) {
+	profesi, _ := s.repository.FindByID(ID)
+	deleteProfesi, err := s.repository.Delete(profesi)
+	return deleteProfesi, err
 }

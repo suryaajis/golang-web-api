@@ -37,6 +37,7 @@ func main() {
 	v1.GET("/profession/:id", profesiHandler.GetProfessionDetail)
 	v1.POST("/profession", profesiHandler.AddProfession)
 	v1.PUT("/profession/:id", profesiHandler.EditProfession)
+	v1.DELETE("/profession/:id", profesiHandler.DeleteProfession)
 
 	v2.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{

@@ -7,6 +7,7 @@ type Repository interface {
 	FindByID(ID int) (Profession, error)
 	Create(profession Profession) (Profession, error)
 	Update(profession Profession) (Profession, error)
+	Delete(profession Profession) (Profession, error)
 }
 
 type repository struct {
@@ -36,5 +37,10 @@ func (r *repository) Create(profession Profession) (Profession, error) {
 
 func (r *repository) Update(profession Profession) (Profession, error) {
 	err := r.db.Save(&profession).Error
+	return profession, err
+}
+
+func (r *repository) Delete(profession Profession) (Profession, error) {
+	err := r.db.Delete(&profession).Error
 	return profession, err
 }

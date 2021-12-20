@@ -130,3 +130,20 @@ func (h *professionHandler) EditProfession(c *gin.Context) {
 		"desc":   profesi.Description,
 	})
 }
+
+func (h *professionHandler) DeleteProfession(c *gin.Context) {
+	idStr := c.Param("id")
+	id, _ := strconv.Atoi(idStr)
+
+	_, err := h.professionService.Delete(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "profession has been deleted",
+	})
+}
